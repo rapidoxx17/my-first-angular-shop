@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
+import { ProductsComponent } from './products/products';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [ProductsComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class AppComponent {
-  title = 'SoleShop';
+export class App {        // ← must be "App" to match main.ts
+  title = 'soleshop';
 }
-
-export { AppComponent as App };

@@ -1,255 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SoleShop – Angular Preview</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #0a0a0a;
-      --white: #fafaf8;
-      --cream: #f5f2ec;
-      --accent: #c8a96e;
-      --accent-dark: #a8873e;
-      --red: #d94f3d;
-      --text-muted: #888;
-      --card-bg: #ffffff;
-      --shadow: 0 8px 32px rgba(0,0,0,0.08);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); }
+<div class="site-wrapper">
 
-    /* Navbar */
-    .navbar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 6%; background: var(--black);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--accent); letter-spacing: 1px; }
-    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
-    .nav-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cart { color: var(--white); font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 0.5rem 1rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; transition: all 0.2s; }
-    .nav-cart:hover { background: var(--accent); border-color: var(--accent); color: var(--black); }
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">SoleShop</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-cart">🛒 Cart</div>
+  </nav>
 
-    /* Hero */
-    .hero {
-      background: var(--black); min-height: 88vh;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 4rem 6%; overflow: hidden; position: relative;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -200px; right: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .hero-content { max-width: 560px; z-index: 1; }
-    .hero-tag {
-      display: inline-block; background: var(--accent); color: var(--black);
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-      padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
-    }
-    .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 7vw, 6rem); color: var(--white); line-height: 1.0; margin-bottom: 1.2rem; }
-    .hero-content h1 em { color: var(--accent); font-style: italic; }
-    .hero-content p { color: rgba(255,255,255,0.6); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 420px; }
-    .btn-primary {
-      display: inline-block; background: var(--accent); color: var(--black);
-      padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem;
-      letter-spacing: 1px; text-decoration: none; text-transform: uppercase; transition: all 0.25s;
-    }
-    .btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(200,169,110,0.4); }
-    .hero-visual { position: relative; width: 380px; height: 380px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .hero-circle {
-      width: 340px; height: 340px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(200,169,110,0.2), rgba(200,169,110,0.05));
-      border: 1px solid rgba(200,169,110,0.25); position: absolute;
-      animation: pulse 4s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-    .hero-shoe-placeholder { font-size: 9rem; z-index: 1; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6)); animation: float 3s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">New Collection 2025</span>
+      <h1>Step Into <br><em>Style.</em></h1>
+      <p>Premium footwear for every occasion. Crafted for comfort. Designed to impress.</p>
+      <a href="#products" class="btn-primary">Shop Now</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-circle"></div>
+      <div class="hero-shoe-placeholder">👟</div>
+    </div>
+  </header>
 
-    /* Products */
-    .products { background: var(--cream); padding: 6rem 6%; }
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--black); margin-bottom: 0.5rem; }
-    .section-header p { color: var(--text-muted); font-size: 1.05rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-    .product-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s; }
-    .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.13); }
-    .product-image { height: 220px; display: flex; align-items: center; justify-content: center; position: relative; font-size: 6rem; }
-    .bg-1 { background: linear-gradient(135deg, #e8f4fd, #c8e6f5); }
-    .bg-2 { background: linear-gradient(135deg, #fdf3e8, #f5ddb8); }
-    .bg-3 { background: linear-gradient(135deg, #edf7ee, #c2e0c4); }
-    .bg-4 { background: linear-gradient(135deg, #fde8f3, #f5c0de); }
-    .bg-5 { background: linear-gradient(135deg, #fef9e8, #faefc0); }
-    .bg-6 { background: linear-gradient(135deg, #eee8fd, #d4c0f5); }
-    .badge { position: absolute; top: 1rem; right: 1rem; background: var(--black); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 50px; }
-    .badge.sale { background: var(--red); }
-    .product-info { padding: 1.5rem; }
-    .product-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.4rem; color: var(--black); }
-    .product-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
-    .product-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .price { font-size: 1.15rem; font-weight: 700; color: var(--black); }
-    .old-price { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-left: 0.4rem; }
-    .btn-cart { background: var(--black); color: var(--white); border: none; padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-    .btn-cart:hover { background: var(--accent); color: var(--black); transform: scale(1.04); }
+  <!-- ✅ Angular Products Component -->
+  <app-products></app-products>
 
-    /* Footer */
-    .footer { background: var(--black); color: var(--white); padding: 4rem 6% 0; }
-    .footer-content { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 0.6rem; }
-    .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
-    .footer-links h4, .footer-contact h4 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
-    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-contact p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0.5rem; }
-    .footer-bottom { text-align: center; padding: 1.5rem 0; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
-
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; text-align: center; padding: 3rem 5%; min-height: auto; gap: 3rem; }
-      .hero-content p { margin: 0 auto 2rem; }
-      .hero-visual { width: 260px; height: 260px; }
-      .hero-circle { width: 240px; height: 240px; }
-      .hero-shoe-placeholder { font-size: 6rem; }
-      .footer-content { grid-template-columns: 1fr; gap: 2rem; }
-      .nav-links { display: none; }
-    }
-  </style>
-</head>
-<body>
-  <div class="site-wrapper">
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-brand">SoleShop</div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <div class="nav-cart">🛒 Cart (0)</div>
-    </nav>
-
-    <!-- Hero -->
-    <header class="hero">
-      <div class="hero-content">
-        <span class="hero-tag">New Collection 2025</span>
-        <h1>Step Into <br><em>Style.</em></h1>
-        <p>Premium footwear for every occasion. Crafted for comfort. Designed to impress.</p>
-        <a href="#products" class="btn-primary">Shop Now</a>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>SoleShop</h3>
+        <p>Premium footwear since 2025.</p>
       </div>
-      <div class="hero-visual">
-        <div class="hero-circle"></div>
-        <div class="hero-shoe-placeholder">👟</div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
       </div>
-    </header>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>📧 hello&#64;soleshop.ph</p>
+        <p>📞 +63 912 345 6789</p>
+        <p>📍 Cagayan de Oro, Philippines</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SoleShop. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <!-- Products -->
-    <section class="products" id="products">
-      <div class="section-header">
-        <h2>Featured Products</h2>
-        <p>Hand-picked styles for the season</p>
-      </div>
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image bg-1"><span>👟</span><span class="badge">New</span></div>
-          <div class="product-info">
-            <h3 class="product-name">AeroStride Runner</h3>
-            <p class="product-desc">Lightweight mesh upper with responsive foam sole.</p>
-            <div class="product-footer">
-              <span class="price">₱3,499</span>
-              <button class="btn-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image bg-2"><span>👞</span><span class="badge sale">Sale</span></div>
-          <div class="product-info">
-            <h3 class="product-name">UrbanEdge Classic</h3>
-            <p class="product-desc">Timeless leather oxford for formal and casual wear.</p>
-            <div class="product-footer">
-              <span class="price">₱4,999 <s class="old-price">₱6,200</s></span>
-              <button class="btn-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image bg-3"><span>🥾</span></div>
-          <div class="product-info">
-            <h3 class="product-name">TrailBlazer Boot</h3>
-            <p class="product-desc">Rugged waterproof boot built for outdoor adventures.</p>
-            <div class="product-footer">
-              <span class="price">₱5,799</span>
-              <button class="btn-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image bg-4"><span>👡</span><span class="badge">Popular</span></div>
-          <div class="product-info">
-            <h3 class="product-name">Glam Heels Pro</h3>
-            <p class="product-desc">Elegant block heel with cushioned insole for all-day wear.</p>
-            <div class="product-footer">
-              <span class="price">₱3,299</span>
-              <button class="btn-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image bg-5"><span>🩴</span></div>
-          <div class="product-info">
-            <h3 class="product-name">SunWalk Sandal</h3>
-            <p class="product-desc">Breathable summer sandal with arch support technology.</p>
-            <div class="product-footer">
-              <span class="price">₱1,899</span>
-              <button class="btn-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image bg-6"><span>👟</span><span class="badge sale">Sale</span></div>
-          <div class="product-info">
-            <h3 class="product-name">FlexFit Trainer</h3>
-            <p class="product-desc">Versatile cross-trainer with multi-directional flex grooves.</p>
-            <div class="product-footer">
-              <span class="price">₱4,199 <s class="old-price">₱5,500</s></span>
-              <button class="btn-cart">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <h3>SoleShop</h3>
-          <p>Premium footwear since 2025.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact Us</h4>
-          <p>📧 hello@soleshop.ph</p>
-          <p>📞 +63 912 345 6789</p>s
-          <p>📍 Cagayan de Oro, Philippines</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 SoleShop. All rights reserved.</p>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
+</div>
